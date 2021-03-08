@@ -1,0 +1,5 @@
+{
+    "host": "https://api.openweathermap.org/data/2.5",
+    "city": "Pula",
+    "key": "524464013431281f7aabe3e488765d52"
+}
