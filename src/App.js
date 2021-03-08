@@ -46,6 +46,10 @@ function App() {
       <Layout>
         <City>
             <p>{JSON.stringify(weatherData)}</p>
+            <div>
+              <h2>{weatherData.name}, {weatherData.weather ? weatherData.weather[0].description : ''}</h2>
+              <img src={weatherData.weather ? `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png` : ''}/>
+            </div>
             <button onClick={openForecastHandler}>{isForecastOpen ? '-' : '+'}</button>
             {isForecastOpen ? <div>{forecastData.map(val => <li key={val.dt}>{JSON.stringify(val)}</li>)}</div> : null}
         </City>
