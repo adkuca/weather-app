@@ -1,3 +1,5 @@
+import './city.scss';
+
 function City(props) {
     
     return (

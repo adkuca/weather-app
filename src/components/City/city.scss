@@ -1,0 +1,119 @@
+@use '../../app.scss';
+
+$pad: 5%;
+
+* {
+    color: snow;
+    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+    font-size: calc(10px + 2vmin);
+}
+
+body {
+    background-color: rgb(59, 59, 145);
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    background-color: rgb(112, 116, 129);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__city {
+        
+    }
+
+    &__img-wrapper {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.main-info {
+    $self: &;
+    background-color: rgb(85, 83, 102);
+    position: relative;
+    // height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // align-content: stretch;
+
+    &__temp {
+        flex: 1;
+        margin: 0;
+        padding-right: 2.5vmin;
+        text-align: end;
+        font-size: calc(80px + 14vmin)
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex: 1;
+        background-color: purple;
+        #{$self}__item {
+            margin: 0.4em;
+        }
+    }
+}
+
+.open-forecast-btn {
+    font-size: calc(22px + 1.4vmin);
+    align-self: flex-end;
+    background-color: snow;
+    padding: 0;
+    line-height: 0;
+    border-radius: 8px;
+    height: 1.2em;
+    width: 1.2em;
+    color:rgb(29, 19, 112);
+}
+
+.forecast-box {
+    $self: &;
+    background-color:rgb(72, 68, 107);
+    border-radius: 5px;
+    border: 0.15em solid snow;
+    padding: 4vh $pad;
+
+    &__title {
+        text-align: start;
+        margin-top: 0;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-around;
+        // align-items: center;
+
+        #{$self}__item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-start;
+            // flex: 1;
+            // background-color: purple;
+
+
+            #{$self}__weekday {
+                margin: 0.4em;
+            }
+
+            #{$self}__temp {
+                margin: 0.4em;
+            }
+
+            #{$self}__description {
+                margin: 0.4em;
+            }
+        }
+    }
+}
