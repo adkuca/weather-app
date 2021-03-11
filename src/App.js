@@ -84,17 +84,15 @@ function App() {
       <Layout>
         <City>
           <div className="container">
-            <div className="">
-              <div className="heading">
-                <h2 className="heading__city">{weatherData.name}, {weatherDataDisplay.capitalizedDescrip}</h2>
-                <div className="heading__img-wrapper">
-                  <img className="heading__img" src={weatherData.weather && `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt=""/>
-                </div>
+            <div className="heading">
+              <h2 className="heading__city">{weatherData.name}, {weatherDataDisplay.capitalizedDescrip}</h2>
+              <div className="heading__img-wrapper">
+                <img className="heading__img" src={weatherData.weather && `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt=""/>
               </div>
-              <div className="main-info">
-                <h3 className="main-info__temp">{weatherData.main && Math.round(weatherData.main.temp)}°</h3>
-                {weatherDataDisplay.rightWeatherInfoBlock}
-              </div>
+            </div>
+            <div className="main-info">
+              <h3 className="main-info__temp">{weatherData.main && Math.round(weatherData.main.temp)}°</h3>
+              {weatherDataDisplay.rightWeatherInfoBlock}
             </div>
             <button className="open-forecast-btn" onClick={openForecastHandler}>{isForecastOpen ? '-' : '+'}</button>
             {isForecastOpen && forecastDataDisplay.forecastBox}
