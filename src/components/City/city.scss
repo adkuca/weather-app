@@ -8,12 +8,11 @@ $scaling_distance: calc(-25px + 4.5vw);
     color: $app_theme_font_color;
     font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
     font-size: calc(10px + 2vmin);
-}
-
-body {
+    height: 100vh;
     background-color: $app_theme_background_color;
     background-image: linear-gradient($app_theme_background_color, rgb(48, 48, 128));
-    height: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .container {
