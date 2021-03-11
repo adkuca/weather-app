@@ -1,53 +1,58 @@
 @use '../../app.scss';
 
-$pad: 5%;
+$app_theme_background_color: rgb(59, 59, 145);
+$app_theme_font_color: snow;
+$scaling_distance: calc(-25px + 4.5vw);
 
-* {
-    color: snow;
+:root {
+    color: $app_theme_font_color;
     font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
     font-size: calc(10px + 2vmin);
 }
 
 body {
-    background-color: rgb(59, 59, 145);
+    background-color: $app_theme_background_color;
+    background-image: linear-gradient($app_theme_background_color, rgb(48, 48, 128));
+    height: 100vh;
 }
 
 .container {
     position: relative;
     display: flex;
     flex-direction: column;
+    padding-left: $scaling_distance;
+    padding-right: $scaling_distance;
 }
 
 .heading {
-    background-color: rgb(112, 116, 129);
+    $self: &;
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    &__city {
-        
-    }
-
     &__img-wrapper {
         display: flex;
         align-items: center;
+
+        #{$self}__img {
+            height: max(50px, 2.5em);
+        }
     }
 }
 
 .main-info {
     $self: &;
-    background-color: rgb(85, 83, 102);
-    position: relative;
-    // height: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // align-content: stretch;
+    flex-wrap: wrap;
+    border-radius: 5px;
 
     &__temp {
         flex: 1;
         margin: 0;
-        padding-right: 2.5vmin;
+        padding-right: $scaling_distance;
         text-align: end;
         font-size: calc(80px + 14vmin)
     }
@@ -58,9 +63,21 @@ body {
         justify-content: space-around;
         align-items: flex-start;
         flex: 1;
-        background-color: purple;
+        padding-left: $scaling_distance;
         #{$self}__item {
             margin: 0.4em;
+            white-space: nowrap;
+        }
+    }
+
+    @media (max-width: 437px) {
+        & {
+            flex-flow: column nowrap;
+
+            &__temp {
+                text-align: center;
+                padding-right: 0;
+            }
         }
     }
 }
@@ -68,21 +85,21 @@ body {
 .open-forecast-btn {
     font-size: calc(22px + 1.4vmin);
     align-self: flex-end;
-    background-color: snow;
+    background-color: $app_theme_font_color;
     padding: 0;
     line-height: 0;
     border-radius: 8px;
     height: 1.2em;
     width: 1.2em;
-    color:rgb(29, 19, 112);
+    margin: 0.125em 0;
+    color: $app_theme_background_color;
 }
 
 .forecast-box {
     $self: &;
-    background-color:rgb(72, 68, 107);
     border-radius: 5px;
-    border: 0.15em solid snow;
-    padding: 4vh $pad;
+    border: 0.15em solid $app_theme_font_color;
+    padding: 4vh 5%;
 
     &__title {
         text-align: start;
@@ -91,28 +108,46 @@ body {
 
     &__list {
         display: flex;
-        justify-content: space-around;
-        // align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
 
         #{$self}__item {
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            align-items: flex-start;
-            // flex: 1;
-            // background-color: purple;
+            justify-content: flex-start;
+            flex: 1;
 
-
-            #{$self}__weekday {
-                margin: 0.4em;
-            }
-
-            #{$self}__temp {
-                margin: 0.4em;
+            span {
+                font-size: calc(12px + 2vmin);
+                margin: 0.4rem;
+                text-align: left;
             }
 
             #{$self}__description {
-                margin: 0.4em;
+                font-size: calc(6px + 2vmin);
+            }
+        }
+    }
+
+    @media (max-width: 437px) {
+        & {
+            &__list {
+                flex-direction: column;
+
+                #{$self}__item {
+                    display: grid;
+                    grid-template-columns: 32% 43% 25%;
+                    justify-items: center;
+                    align-items: center;
+
+                    #{$self}__weekday {
+                        justify-self: start;
+                    }
+
+                    #{$self}__description {
+                        justify-self: start;
+                    }
+                }
             }
         }
     }
