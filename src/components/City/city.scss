@@ -13,7 +13,7 @@ $scaling_distance: calc(-25px + 4.5vw);
 body {
     background-color: $app_theme_background_color;
     background-image: linear-gradient($app_theme_background_color, rgb(48, 48, 128));
-    height: 100vh;
+    height: 100%;
 }
 
 .container {
