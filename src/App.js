@@ -6,16 +6,10 @@ import City from './components/City/City.jsx';
 
 const getWeatherEarly = getWeather();
 
-const Ok = React.memo(() => {
-  console.log(928989234);
-  return <div>Ok</div>
-})
-
 const App = () => {
   const [weatherData, setWeatherData] = useState({});
   const [forecastData, setForecastData] = useState([]);
   const [isForecastOpen, setForecastOpen] = useState(false);
-  const [test, setTest] = useState('_');
 
   useEffect(() => {
     (async () => {
@@ -45,13 +39,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <button onClick={() => setTest(Math.random())}>click</button>
-      <div>test is: {test}</div>
       <Layout>
         {JSON.stringify(weatherData) === '{}' ? <h1>Loading...</h1> : 
         <City isForecastOpen={isForecastOpen} weatherData={weatherData} forecastData={forecastData} openForecastHandler={openForecastHandler} />}
       </Layout>
-        <Ok/>
     </div>
   );
 }

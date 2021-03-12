@@ -3,10 +3,7 @@ import './city.scss';
 import degToCardinalDir from './helpers/degToCardinalDirection.js';
 
 const City = ({ isForecastOpen, weatherData, forecastData, openForecastHandler }) => {
-    console.log('city render');
-
     const weatherDataDisplay = useMemo(() => {
-        console.log('aaaa')
         const cardinalWindDir = weatherData.wind && degToCardinalDir(weatherData.wind.deg)
         const capitalizedDescrip = weatherData.weather && (s => s.substr(0, 1).toUpperCase() + s.substr(1))(weatherData.weather[0].description);
     
@@ -23,7 +20,6 @@ const City = ({ isForecastOpen, weatherData, forecastData, openForecastHandler }
       }, [weatherData]);
 
     const forecastDataDisplay = useMemo(() => {
-        console.log('forecastmemeo')
         const forecastBoxItem = (day) => {
           const capitalizedWeatherDescrip = (s => s.substr(0, 1).toUpperCase() + s.substr(1))(day.weather[0].description);
           return (
