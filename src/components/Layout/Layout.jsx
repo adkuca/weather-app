@@ -1,10 +1,7 @@
-function Layout(props) {
-    
-    return (
+const Layout = (props) => (
         <>
             {props.children}
         </>
-    );
-}
+);
 
 export default Layout;

@@ -2,7 +2,8 @@
 
 $app_theme_background_color: rgb(59, 59, 145);
 $app_theme_font_color: snow;
-$scaling_distance: calc(-25px + 4.5vw);
+$scaling_distance: max(2.8vw, calc(-25px + 4.5vw));
+$scaling_distance_inner: max(1vw, calc(-25px + 4.5vw));
 
 :root {
     color: $app_theme_font_color;
@@ -21,6 +22,10 @@ $scaling_distance: calc(-25px + 4.5vw);
     flex-direction: column;
     padding-left: $scaling_distance;
     padding-right: $scaling_distance;
+    border: 0.2em solid $app_theme_font_color;
+    border-radius: 35px;
+    padding-top: max(2px, 0.5%);
+    padding-bottom:max(14px, 2.5%);
 }
 
 .heading {
@@ -29,6 +34,10 @@ $scaling_distance: calc(-25px + 4.5vw);
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &__city {
+        text-align: start;
+    }
 
     &__img-wrapper {
         display: flex;
@@ -51,7 +60,7 @@ $scaling_distance: calc(-25px + 4.5vw);
     &__temp {
         flex: 1;
         margin: 0;
-        padding-right: $scaling_distance;
+        padding-right: $scaling_distance_inner;
         text-align: end;
         font-size: calc(80px + 14vmin)
     }
@@ -62,14 +71,14 @@ $scaling_distance: calc(-25px + 4.5vw);
         justify-content: space-around;
         align-items: flex-start;
         flex: 1;
-        padding-left: $scaling_distance;
+        padding-left: $scaling_distance_inner;
         #{$self}__item {
             margin: 0.4em;
             white-space: nowrap;
         }
     }
 
-    @media (max-width: 437px) {
+    @media (max-width: 450px) {
         & {
             flex-flow: column nowrap;
 
@@ -88,16 +97,26 @@ $scaling_distance: calc(-25px + 4.5vw);
     padding: 0;
     line-height: 0;
     border-radius: 8px;
+    border: none;
     height: 1.2em;
     width: 1.2em;
-    margin: 0.125em 0;
+    margin: 0.125em;
     color: $app_theme_background_color;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:focus-visible {
+        outline: 1px dotted #212121;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
 }
 
 .forecast-box {
     $self: &;
-    border-radius: 5px;
-    border: 0.15em solid $app_theme_font_color;
+    border-radius: 12px;
+    border: 0.175em solid $app_theme_font_color;
     padding: 4vh 5%;
 
     &__title {
@@ -128,7 +147,7 @@ $scaling_distance: calc(-25px + 4.5vw);
         }
     }
 
-    @media (max-width: 437px) {
+    @media (max-width: 450px) {
         & {
             &__list {
                 flex-direction: column;
