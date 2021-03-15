@@ -1,4 +1,4 @@
-import degToCardinalDir from './degToCardinalDirection';
+import degToCardinalDir from '../degToCardinalDirection';
 
 test.each([
   [348.75, 'N'],
