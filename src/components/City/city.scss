@@ -1,172 +1,170 @@
-@use '../../app.scss';
-
 $app_theme_background_color: rgb(59, 59, 145);
 $app_theme_font_color: snow;
 $scaling_distance: max(2.8vw, calc(-25px + 4.5vw));
 $scaling_distance_inner: max(1vw, calc(-25px + 4.5vw));
 
 :root {
-    color: $app_theme_font_color;
-    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
-    font-size: calc(10px + 2vmin);
-    height: 100vh;
-    background-color: $app_theme_background_color;
-    background-image: linear-gradient($app_theme_background_color, rgb(48, 48, 128));
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+  color: $app_theme_font_color;
+  font-family: Helvetica, 'Trebuchet MS', Verdana, sans-serif;
+  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  background-color: $app_theme_background_color;
+  background-image: linear-gradient($app_theme_background_color, rgb(48, 48, 128));
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding-left: $scaling_distance;
-    padding-right: $scaling_distance;
-    border: 0.2em solid $app_theme_font_color;
-    border-radius: 35px;
-    padding-top: max(2px, 0.5%);
-    padding-bottom:max(14px, 2.5%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: $scaling_distance;
+  padding-right: $scaling_distance;
+  border: 0.2em solid $app_theme_font_color;
+  border-radius: 35px;
+  padding-top: max(2px, 0.5%);
+  padding-bottom: max(14px, 2.5%);
 }
 
 .heading {
-    $self: &;
-    position: relative;
+  $self: &;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__city {
+    text-align: start;
+  }
+
+  &__img-wrapper {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
-    &__city {
-        text-align: start;
+    #{$self}__img {
+      height: max(50px, 2.5em);
     }
-
-    &__img-wrapper {
-        display: flex;
-        align-items: center;
-
-        #{$self}__img {
-            height: max(50px, 2.5em);
-        }
-    }
+  }
 }
 
 .main-info {
-    $self: &;
+  $self: &;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 5px;
+
+  &__temp {
+    flex: 1;
+    margin: 0;
+    padding-right: $scaling_distance_inner;
+    text-align: end;
+    font-size: calc(80px + 14vmin);
+  }
+
+  &__list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    border-radius: 5px;
-
-    &__temp {
-        flex: 1;
-        margin: 0;
-        padding-right: $scaling_distance_inner;
-        text-align: end;
-        font-size: calc(80px + 14vmin)
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex: 1;
+    padding-left: $scaling_distance_inner;
+    #{$self}__item {
+      margin: 0.4em;
+      white-space: nowrap;
     }
+  }
 
-    &__list {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;
-        flex: 1;
-        padding-left: $scaling_distance_inner;
-        #{$self}__item {
-            margin: 0.4em;
-            white-space: nowrap;
-        }
+  @media (max-width: 450px) {
+    & {
+      flex-flow: column nowrap;
+
+      &__temp {
+        text-align: center;
+        padding-right: 0;
+      }
     }
-
-    @media (max-width: 450px) {
-        & {
-            flex-flow: column nowrap;
-
-            &__temp {
-                text-align: center;
-                padding-right: 0;
-            }
-        }
-    }
+  }
 }
 
 .open-forecast-btn {
-    font-size: calc(22px + 1.4vmin);
-    align-self: flex-end;
-    background-color: $app_theme_font_color;
-    padding: 0;
-    line-height: 0;
-    border-radius: 8px;
-    border: none;
-    height: 1.2em;
-    width: 1.2em;
-    margin: 0.125em;
-    color: $app_theme_background_color;
+  font-size: calc(22px + 1.4vmin);
+  align-self: flex-end;
+  background-color: $app_theme_font_color;
+  padding: 0;
+  line-height: 0;
+  border-radius: 8px;
+  border: none;
+  height: 1.2em;
+  width: 1.2em;
+  margin: 0.125em;
+  color: $app_theme_background_color;
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &:focus-visible {
-        outline: 1px dotted #212121;
-        outline: 5px auto -webkit-focus-ring-color;
-    }
+  &:focus-visible {
+    outline: 1px dotted #212121;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
 }
 
 .forecast-box {
-    $self: &;
-    border-radius: 12px;
-    border: 0.175em solid $app_theme_font_color;
-    padding: 4vh 5%;
+  $self: &;
+  border-radius: 12px;
+  border: 0.175em solid $app_theme_font_color;
+  padding: 4vh 5%;
 
-    &__title {
-        text-align: start;
-        margin-top: 0;
+  &__title {
+    text-align: start;
+    margin-top: 0;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+
+    #{$self}__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex: 1;
+
+      span {
+        font-size: calc(12px + 2vmin);
+        margin: 0.4rem;
+        text-align: left;
+      }
+
+      #{$self}__description {
+        font-size: calc(6px + 2vmin);
+      }
     }
+  }
 
-    &__list {
-        display: flex;
-        justify-content: space-between;
-        overflow: hidden;
+  @media (max-width: 450px) {
+    & {
+      &__list {
+        flex-direction: column;
 
         #{$self}__item {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            flex: 1;
+          display: grid;
+          grid-template-columns: 32% 43% 25%;
+          justify-items: center;
+          align-items: center;
 
-            span {
-                font-size: calc(12px + 2vmin);
-                margin: 0.4rem;
-                text-align: left;
-            }
+          #{$self}__weekday {
+            justify-self: start;
+          }
 
-            #{$self}__description {
-                font-size: calc(6px + 2vmin);
-            }
+          #{$self}__description {
+            justify-self: start;
+          }
         }
+      }
     }
-
-    @media (max-width: 450px) {
-        & {
-            &__list {
-                flex-direction: column;
-
-                #{$self}__item {
-                    display: grid;
-                    grid-template-columns: 32% 43% 25%;
-                    justify-items: center;
-                    align-items: center;
-
-                    #{$self}__weekday {
-                        justify-self: start;
-                    }
-
-                    #{$self}__description {
-                        justify-self: start;
-                    }
-                }
-            }
-        }
-    }
+  }
 }
