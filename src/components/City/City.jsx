@@ -3,26 +3,17 @@ import PropTypes from 'prop-types';
 import './city.scss';
 import degToCardinalDir from './helpers/degToCardinalDirection';
 
-const City = ({
-  isForecastOpen,
-  weatherData,
-  forecastData,
-  openForecastHandler,
-}) => {
+const City = ({ isForecastOpen, weatherData, forecastData, openForecastHandler }) => {
   const weatherDataDisplay = useMemo(() => {
-    const cardinalWindDir =
-      weatherData.wind && degToCardinalDir(weatherData.wind.deg);
+    const cardinalWindDir = weatherData.wind && degToCardinalDir(weatherData.wind.deg);
     const capitalizedDescrip =
       weatherData.weather &&
-      ((s) => s.substr(0, 1).toUpperCase() + s.substr(1))(
-        weatherData.weather[0].description
-      );
+      ((s) => s.substr(0, 1).toUpperCase() + s.substr(1))(weatherData.weather[0].description);
 
     const rightWeatherInfoBlock = (
       <ul className='main-info__list'>
         <li key={1} className='main-info__item'>
-          Feels Like: {weatherData.main && Math.round(weatherData.main.feels_like)}°
-          C
+          Feels Like: {weatherData.main && Math.round(weatherData.main.feels_like)}° C
         </li>
         <li key={2} className='main-info__item'>
           Pressure: {weatherData.main && weatherData.main.pressure} hPa
@@ -31,8 +22,7 @@ const City = ({
           Humidity: {weatherData.main && weatherData.main.humidity}%
         </li>
         <li key={4} className='main-info__item'>
-          Wind: {weatherData.wind && Math.round(weatherData.wind.speed)} km/h,{' '}
-          {cardinalWindDir}
+          Wind: {weatherData.wind && Math.round(weatherData.wind.speed)} km/h, {cardinalWindDir}
         </li>
       </ul>
     );
@@ -42,8 +32,9 @@ const City = ({
 
   const forecastDataDisplay = useMemo(() => {
     const forecastBoxItem = (day) => {
-      const capitalizedWeatherDescrip = ((s) =>
-        s.substr(0, 1).toUpperCase() + s.substr(1))(day.weather[0].description);
+      const capitalizedWeatherDescrip = ((s) => s.substr(0, 1).toUpperCase() + s.substr(1))(
+        day.weather[0].description
+      );
       return (
         <li key={day.dt} className='forecast-box__item'>
           <span className='forecast-box__weekday'>
@@ -52,9 +43,7 @@ const City = ({
             })}
           </span>
           <span className='forecast-box__temp'>{Math.round(day.main.temp)}°</span>
-          <span className='forecast-box__description'>
-            {capitalizedWeatherDescrip}
-          </span>
+          <span className='forecast-box__description'>{capitalizedWeatherDescrip}</span>
         </li>
       );
     };
@@ -92,11 +81,7 @@ const City = ({
         </h3>
         {weatherDataDisplay.rightWeatherInfoBlock}
       </div>
-      <button
-        className='open-forecast-btn'
-        onClick={openForecastHandler}
-        type='button'
-      >
+      <button className='open-forecast-btn' onClick={openForecastHandler} type='button'>
         {isForecastOpen ? '-' : '+'}
       </button>
       {isForecastOpen && forecastDataDisplay.forecastBox}
